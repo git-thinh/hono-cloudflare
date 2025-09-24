@@ -1,0 +1,20 @@
+{
+  "name": "hono-cloudflare",
+  "scripts": {
+    "dev": "yarn esbuild && yarn dev:wrangler",
+    "dev:wrangler": "wrangler pages dev dist --live-reload --local",
+    "esbuild": "esbuild --bundle --platform=node src/app.js --format=esm --outfile=dist/_worker.js",
+    "build": "yarn esbuild",
+    "golive": "yarn build && wrangler pages publish dist",
+    "golive-01": "wrangler pages deploy",
+    "golive-02": "wrangler pages deployment",
+    "signin": "wrangler login",
+    "signout": "wrangler logout"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.10"
+  },
+  "dependencies": {
+    "hono": "^4.9.8"
+  }
+}
