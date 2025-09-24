@@ -1,20 +1,23 @@
 {
   "name": "hono-cloudflare",
+  "type": "module",
   "scripts": {
-    "dev": "yarn esbuild && yarn dev:wrangler",
-    "dev:wrangler": "wrangler pages dev dist --live-reload --local",
-    "esbuild": "esbuild --bundle --platform=node src/app.js --format=esm --outfile=dist/_worker.js",
-    "build": "yarn esbuild",
-    "golive": "yarn build && wrangler pages publish dist",
-    "golive-01": "wrangler pages deploy",
-    "golive-02": "wrangler pages deployment",
+    "dev": "vite --port=8787 --host=127.0.0.1",
+    "dev-nuc": "vite --port=8787 --host=192.168.1.50",
+    "build": "vite build",
+    "preview": "wrangler pages dev",
+    "deploy": "wrangler pages deploy --commit-dirty=true --project-name=hono-cloudflare ./dist",
+    "golive": "yarn build && yarn deploy",
     "signin": "wrangler login",
     "signout": "wrangler logout"
   },
-  "devDependencies": {
-    "esbuild": "^0.25.10"
-  },
   "dependencies": {
     "hono": "^4.9.8"
+  },
+  "devDependencies": {
+    "@hono/vite-build": "^1.7.0",
+    "@hono/vite-dev-server": "^0.21.1",
+    "vite": "^7.1.7",
+    "wrangler": "^4.39.0"
   }
 }

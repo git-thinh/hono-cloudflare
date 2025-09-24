@@ -2,5 +2,4 @@ name = "hono-cloudflare"
 compatibility_date = "2024-10-21"
 pages_build_output_dir = "./dist"
 compatibility_flags = [ "nodejs_compat" ]
-node_compat = true
 
